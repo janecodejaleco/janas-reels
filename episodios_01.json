@@ -1,0 +1,202 @@
+{
+  "pt": {
+    "title": "O ROUBO QUE NÃO APARECE NO EXTRATO",
+    "theme": "Dinheiro e inflação",
+    "label": "BRASIL",
+    "accent": "gold",
+    "voice": "pt-BR-AntonioNeural",
+    "region": "🇧🇷 Brasil",
+    "scenes": [
+      [
+        "bill",
+        "TEU DINHEIRO SUMIU",
+        "Teu salário não diminuiu. Então por que tu consegue comprar cada vez menos com o mesmo dinheiro?"
+      ],
+      [
+        "cart",
+        "MESMO SALÁRIO. MENOS COMPRAS.",
+        "Tu trabalha, recebe, guarda. Mas o dinheiro que entrou na tua conta não compra necessariamente o mesmo amanhã."
+      ],
+      [
+        "particles",
+        "O ROUBO INVISÍVEL",
+        "O mais absurdo? Ninguém precisa tirar uma nota da tua carteira para o teu poder de compra desaparecer."
+      ],
+      [
+        "politics",
+        "LULA x BOLSONARO",
+        "E enquanto todo mundo discute Lula e Bolsonaro, ninguém discute quem controla as regras do dinheiro."
+      ],
+      [
+        "network",
+        "REGRAS. NÃO PROMESSAS.",
+        "Bitcoin não é milagre. O preço também pode cair. Mas sua emissão segue regras públicas, sem um Banco Central decidindo sozinho."
+      ],
+      [
+        "clock",
+        "QUEM CONTROLA?",
+        "A questão não é ficar rico com Bitcoin. É entender por que tu aceita guardar teu trabalho em dinheiro que não controla."
+      ]
+    ]
+  },
+  "es": {
+    "title": "TU DINERO NO TIENE PASAPORTE",
+    "theme": "Pagos internacionales",
+    "label": "LATINOAMÉRICA",
+    "accent": "cyan",
+    "voice": "es-MX-JorgeNeural",
+    "region": "🌎 América Latina",
+    "scenes": [
+      [
+        "globe",
+        "UN SEGUNDO. ¿Y TU DINERO?",
+        "Puedes enviar un mensaje al otro lado del planeta en un segundo. Ahora intenta enviar dinero."
+      ],
+      [
+        "toll",
+        "FRONTERAS Y COMISIONES",
+        "En Latinoamérica, transferir dinero entre países puede significar comisiones, intermediarios y días de espera."
+      ],
+      [
+        "blocked",
+        "TU DINERO. SUS REGLAS.",
+        "El dinero es tuyo. Pero para moverlo tienes que pedir permiso a una fila de instituciones."
+      ],
+      [
+        "transfer",
+        "OTRA RUTA ES POSIBLE",
+        "Imagina transferir valor de una billetera digital a otra, sin abrir una cuenta bancaria en el destino."
+      ],
+      [
+        "split",
+        "BITCOIN + STABLECOINS",
+        "Bitcoin y las stablecoins ofrecen rutas distintas, con riesgos y costos diferentes, fuera del circuito bancario tradicional."
+      ],
+      [
+        "nodes",
+        "LA LIBERTAD DE ELEGIR",
+        "La revolución no es solo cambiar de moneda. Es elegir cómo guardar y mover el fruto de tu trabajo."
+      ]
+    ]
+  },
+  "en": {
+    "title": "DID YOU BUY BITCOIN OR AN IOU?",
+    "theme": "Self-custody",
+    "label": "GLOBAL",
+    "accent": "gold",
+    "voice": "en-US-GuyNeural",
+    "region": "🌐 English",
+    "scenes": [
+      [
+        "vault",
+        "DO YOU REALLY OWN IT?",
+        "You bought Bitcoin to escape the banks. Congratulations. So why did you leave it with a company?"
+      ],
+      [
+        "wallet",
+        "WHO HOLDS THE KEYS?",
+        "Your exchange account shows a balance. But whoever holds the private keys controls how those assets move."
+      ],
+      [
+        "blocked",
+        "WITHDRAWALS SUSPENDED",
+        "If that platform freezes withdrawals or collapses, you learn the difference between control and a promise."
+      ],
+      [
+        "network",
+        "BACK TO THE MIDDLEMAN?",
+        "Bitcoin enables transfers without a mandatory custodian. Yet people rebuilt the very middleman they wanted to avoid."
+      ],
+      [
+        "key",
+        "TAKE RESPONSIBILITY",
+        "Self-custody means holding your own keys. It also means protecting backups and accepting real security risks."
+      ],
+      [
+        "clock",
+        "NOT YOUR KEYS...",
+        "The real question is not how much Bitcoin you bought. It is who can move it without your permission."
+      ]
+    ]
+  },
+  "ru": {
+    "title": "ДЕНЬГИ ЕСТЬ. ДОСТУПА НЕТ.",
+    "theme": "Финансовая независимость",
+    "label": "СНГ",
+    "accent": "cyan",
+    "voice": "ru-RU-DmitryNeural",
+    "region": "🇷🇺 Русский",
+    "scenes": [
+      [
+        "wallet",
+        "ДЕНЬГИ ВИДНО. ДОСТУПА НЕТ.",
+        "Представь: деньги на счёте есть. Ты видишь баланс, но не можешь перевести ни рубля."
+      ],
+      [
+        "blocked",
+        "ОДИН ЗАПРЕТ — И ВСЁ",
+        "Счёт существует, деньги на месте. Но блокировка или ограничение могут изменить всё за секунды."
+      ],
+      [
+        "border",
+        "ГРАНИЦУ ПЕРЕСЕЧЬ ПРОЩЕ",
+        "Границу можно пересечь за несколько часов. А перевести через неё свои сбережения намного сложнее."
+      ],
+      [
+        "key",
+        "КЛЮЧИ У ТЕБЯ",
+        "А если хранить цифровые активы в кошельке, ключами которого управляешь только ты?"
+      ],
+      [
+        "network",
+        "АЛЬТЕРНАТИВА ЕСТЬ",
+        "Биткоин не отменяет законы, риски или волатильность. Но даёт альтернативу единственному хранителю денег."
+      ],
+      [
+        "clock",
+        "КТО КОНТРОЛИРУЕТ ДОСТУП?",
+        "Финансовая свобода — не только владеть деньгами. Важно понимать, кто контролирует твой доступ к ним."
+      ]
+    ]
+  },
+  "he": {
+    "title": "למה יהודים צריכים להסתכל על ברזיל?",
+    "theme": "ביטחון יהודי",
+    "label": "ישראל",
+    "accent": "red",
+    "voice": "he-IL-AvriNeural",
+    "region": "🇮🇱 ישראל",
+    "scenes": [
+      [
+        "globe",
+        "למה דווקא ברזיל?",
+        "יהודים בכל העולם צריכים לשים לב לברזיל. חקירת טרור משנת 2023 העלתה שאלות מדאיגות."
+      ],
+      [
+        "dossier",
+        "מבצע טרפיצ׳ה | 2023",
+        "בנובמבר 2023 פתחה המשטרה הפדרלית בברזיל במבצע טרפיצ׳ה, בחשד להכנות לפיגועי טרור."
+      ],
+      [
+        "intel",
+        "חשדות לקשר עם חיזבאללה",
+        "לפי דיווחי רויטרס, נחקר חשד לקשרים עם חיזבאללה ולאיומים על יעדים יהודיים בברזיל."
+      ],
+      [
+        "transfer",
+        "שיתוף פעולה מודיעיני",
+        "ישראל הודיעה שהמוסד שיתף פעולה עם הרשויות בברזיל כדי לסכל את האיום הנטען."
+      ],
+      [
+        "nodes",
+        "ביטחון מעבר לגבולות",
+        "ביטחון קהילות יהודיות לא מתחיל ולא נגמר בגבולות ישראל. המקרה הזה ממחיש מדוע."
+      ],
+      [
+        "globe",
+        "המרחק אינו הגנה",
+        "ברזיל רחוקה אלפי קילומטרים מישראל, אבל איומים חוצי גבולות לא נעצרים באוקיינוס."
+      ]
+    ]
+  }
+}
