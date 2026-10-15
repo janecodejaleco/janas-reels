@@ -1,0 +1,53 @@
+name: JANAS BTC | 5 Reels cinematicos (6x8 segundos)
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/reels-cinematicos.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  criar-cinco-videos:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Instalar ferramentas de audio e animacao
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg fonts-noto-core fonts-dejavu-core
+          python -m pip install 'Pillow>=10.3,<13' 'edge-tts>=7.0,<8'
+      - name: Validar os cinco roteiros regionais
+        run: python gerar_cinematicos.py --validate
+      - name: Gerar cinco Reels completos com narracao real
+        run: python gerar_cinematicos.py
+      - name: Verificar quantidade e duracao dos MP4
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import subprocess
+          videos=sorted(Path('saida_cinematica').glob('JANAS_BTC_REEL_01_*.mp4'))
+          assert len(videos)==5, f'Esperados 5 MP4, encontrados {len(videos)}'
+          for v in videos:
+            sec=float(subprocess.check_output(['ffprobe','-v','error','-show_entries','format=duration','-of','default=noprint_wrappers=1:nokey=1',str(v)]))
+            print(v.name, round(sec,2),'segundos')
+            assert 46 <= sec <= 50, f'Duracao inesperada: {sec}'
+          PY
+      - name: Entregar 5 Reels prontos e 30 clipes para CapCut
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: janas-cinematicos-5-reels-${{ github.run_number }}
+          path: |
+            saida_cinematica/JANAS_BTC_REEL_01_*.mp4
+            saida_cinematica/*/clip_*.mp4
+            saida_cinematica/ROTEIROS_E_LEGENDAS.json
+            saida_cinematica/LEIA_PRIMEIRO.txt
+          retention-days: 7
+          if-no-files-found: warn
