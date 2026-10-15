@@ -1,0 +1,50 @@
+name: JANAS BTC | Cinco Reels diarios (sem IA paga)
+
+on:
+  workflow_dispatch:
+    inputs:
+      dia:
+        description: 'Dia da serie de 1 a 30; 0 seleciona automaticamente pela data'
+        required: false
+        type: number
+        default: 0
+  schedule:
+    - cron: '17 9 * * *'
+      timezone: 'America/Sao_Paulo'
+
+permissions:
+  contents: read
+
+jobs:
+  cinco-reels:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Instalar FFmpeg e fontes multiculturais
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg fonts-noto-core fonts-dejavu-core
+          fc-cache -f
+          python -m pip install -r requirements.txt
+      - name: Validar 150 roteiros preescritos
+        run: python gerar_reels.py --validate
+      - name: Renderizar os cinco Reels
+        env:
+          DATA_INICIO: '2026-10-16'
+          DIA_SOLICITADO: ${{ inputs.dia || 0 }}
+        run: python gerar_reels.py --day "$DIA_SOLICITADO"
+      - name: Disponibilizar MP4 e legendas por tres dias
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: janabtc-reels-${{ github.run_number }}
+          path: |
+            saida/**/*.mp4
+            saida/**/legendas_para_post.txt
+            saida/**/roteiros.json
+          retention-days: 3
+          if-no-files-found: warn
