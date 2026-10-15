@@ -1,0 +1,13 @@
+JANAS BTC — PACOTE SEM GEMINI
+
+1. Abra README.md.
+2. Crie um repositório PÚBLICO no GitHub.
+3. Envie o conteúdo extraído, incluindo a pasta oculta .github/workflows.
+4. Abra Actions e execute o fluxo com dia = 1.
+5. Baixe os 5 MP4 na seção Artifacts.
+
+Roteiros prontos: 30 dias x 5 idiomas = 150 roteiros.
+IA paga necessária: NENHUMA.
+API key necessária: NENHUMA.
+A produção utiliza voz Edge TTS online; não é garantido serviço ilimitado.
+A publicação no Instagram ainda não está automatizada.
