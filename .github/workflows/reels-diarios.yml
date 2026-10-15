@@ -1,6 +1,9 @@
 name: JANAS BTC | Cinco Reels diarios (sem IA paga)
 
 on:
+  push:
+    paths:
+      - '.github/workflows/reels-diarios.yml'
   workflow_dispatch:
     inputs:
       dia:
@@ -32,10 +35,13 @@ jobs:
           python -m pip install -r requirements.txt
       - name: Validar 150 roteiros preescritos
         run: python gerar_reels.py --validate
+      - name: Testar geração com voz real antes do primeiro lote
+        if: github.event_name == 'push'
+        run: python gerar_reels.py --day 1 --only pt --scenes 1
       - name: Renderizar os cinco Reels
         env:
           DATA_INICIO: '2026-10-16'
-          DIA_SOLICITADO: ${{ inputs.dia || 0 }}
+          DIA_SOLICITADO: ${{ github.event_name == 'push' && 1 || inputs.dia || 0 }}
         run: python gerar_reels.py --day "$DIA_SOLICITADO"
       - name: Disponibilizar MP4 e legendas por tres dias
         if: always()
