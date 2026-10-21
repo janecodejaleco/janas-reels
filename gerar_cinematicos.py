@@ -207,7 +207,6 @@ def fit_subtitle(d,s,lang,accent,progress):
  for i,line in enumerate(lines):
   w=width(d,line,f,lang);x=max(45,(W-w)//2)
   textline(d,(x,base+i*49),line,f,(242,244,246),lang)
- d.rectangle((46,base+h-8,46+int((W-92)*progress),base+h-4),fill=accent)
 
 
 def background(accent):
@@ -223,8 +222,6 @@ def background(accent):
  d.rectangle((0,0,12,H),fill=color(accent,.34))
  d.line((32,0,32,H),fill=color(accent,.18),width=2)
  d.rectangle((W-12,0,W,H),fill=color(accent,.22))
- d.rounded_rectangle((45,59,323,129),radius=12,fill=(21,37,55),outline=color(accent,.52),width=2)
- textline(d,(61,74),'JANAS BTC',fonts('en',35,True),(245,248,244))
  return img
 
 
@@ -311,15 +308,7 @@ def draw_scene_frame(base,lang,info,scene,idx,fi):
   rr=int(35+360*max(portal,intro))
   for j in range(4):
    r=rr+j*31;d.ellipse((x-r,y-r,x+r,y+r),outline=color(c,.35-j*.07),width=8)
- # Kinetic headlines, progress and upper aesthetic framing
- d.rounded_rectangle((520,77,675,121),radius=9,fill=(20,38,53),outline=color(c,.35),width=2)
- textline(d,(532,88),info['label'],fonts(lang,18 if lang=='he' else 19,True),(216,229,233),lang)
- d.line((43,158,W-43,158),fill=color(c,.25),width=2)
- titlepanel(d,headline,lang,c,t,idx)
- d.rounded_rectangle((46,1142,674,1148),radius=3,fill=(33,53,71))
- d.rounded_rectangle((46,1142,46+int(628*(idx+phase)/6),1148),radius=3,fill=c)
- textline(d,(48,1167),f'EP 01   /   {idx+1:02d}:06',fonts('en',22,True),(168,185,202))
- textline(d,(525,1167),'JANASBTC',fonts('en',20,True),c)
+ # Clean output: animation and subtitles only; no branding or editorial overlays.
  parts=narr.split(' ');half=max(1,round(len(parts)*.52));phrase=' '.join(parts[:half]) if phase<.49 else ' '.join(parts[half:])
  fit_subtitle(d,phrase,lang,c,(phase%(.50))/.50)
  return im
@@ -375,7 +364,8 @@ def encode_scene(lang,info,scene,idx,work,base,quiet=False,frames_limit=None):
 def main():
  ap=argparse.ArgumentParser()
  ap.add_argument('--only',choices=['pt','es','en','ru','he'])
- ap.add_argument('--fake-tts',action='store_true',help='Preview/diagnostics only: silent videos; never publish.')
+ ap.add_argument('--fake-tts',action='store_true',help='Legacy alias for silent output (now the default).')
+ ap.add_argument('--narration',action='store_true',help='Opt in to TTS narration; default output contains only animation and captions.')
  ap.add_argument('--test-frames',type=int,default=0,help='Technical test: encode N frames of each scene')
  ap.add_argument('--scenes',type=int,choices=[1,2,3,4,5,6],default=6)
  ap.add_argument('--validate',action='store_true')
@@ -392,7 +382,7 @@ def main():
   print('RENDER',lang,v['title'],flush=True)
   base=background(COLORS[v['accent']]);clips=[]
   for i,scene in enumerate(v['scenes'][:args.scenes]):
-   clips.append(encode_scene(lang,v,scene,i,work,base,quiet=args.fake_tts,frames_limit=args.test_frames or None))
+   clips.append(encode_scene(lang,v,scene,i,work,base,quiet=(args.fake_tts or not args.narration),frames_limit=args.test_frames or None))
    print('CLIP',lang,i+1,'OK',flush=True)
   if args.scenes==6 and not args.test_frames:
    listfile=work/'segments.txt';listfile.write_text(''.join(f"file '{p.name}'\n" for p in clips))
