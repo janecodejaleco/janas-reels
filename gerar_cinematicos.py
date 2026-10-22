@@ -243,7 +243,7 @@ def motif(d,kind,x,y,c,t,step):
   d.line((x,y+175,x,y-190),fill=color(c,.42),width=8)
   glowing_circle(d,x,y-193,18,c)
  elif kind=='network':
-  drawn_graph(d,x,y,c,t);textline(d,(x-59,y-75),'₿',fonts('en',135,True),(249,214,124))
+  drawn_graph(d,x,y,c,t);textline(d,(x-50,y-32),'BTC',fonts('en',46,True),(249,214,124))
  elif kind=='clock':
   glowing_circle(d,x,y,205,c,False)
   for i in range(12):
@@ -364,8 +364,8 @@ def encode_scene(lang,info,scene,idx,work,base,quiet=False,frames_limit=None):
 def main():
  ap=argparse.ArgumentParser()
  ap.add_argument('--only',choices=['pt','es','en','ru','he'])
- ap.add_argument('--fake-tts',action='store_true',help='Legacy alias for silent output (now the default).')
- ap.add_argument('--narration',action='store_true',help='Opt in to TTS narration; default output contains only animation and captions.')
+ ap.add_argument('--fake-tts',action='store_true',help='Generate silent preview output only; narration is enabled by default.')
+ ap.add_argument('--narration',action='store_true',help='Compatibility flag: narration is already enabled by default.')
  ap.add_argument('--test-frames',type=int,default=0,help='Technical test: encode N frames of each scene')
  ap.add_argument('--scenes',type=int,choices=[1,2,3,4,5,6],default=6)
  ap.add_argument('--validate',action='store_true')
@@ -382,7 +382,7 @@ def main():
   print('RENDER',lang,v['title'],flush=True)
   base=background(COLORS[v['accent']]);clips=[]
   for i,scene in enumerate(v['scenes'][:args.scenes]):
-   clips.append(encode_scene(lang,v,scene,i,work,base,quiet=(args.fake_tts or not args.narration),frames_limit=args.test_frames or None))
+   clips.append(encode_scene(lang,v,scene,i,work,base,quiet=args.fake_tts,frames_limit=args.test_frames or None))
    print('CLIP',lang,i+1,'OK',flush=True)
   if args.scenes==6 and not args.test_frames:
    listfile=work/'segments.txt';listfile.write_text(''.join(f"file '{p.name}'\n" for p in clips))
